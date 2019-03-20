@@ -19,18 +19,35 @@ const createLintingRule = () => ({
   }
 })
 
+let entry = {
+  app: './example/main.js'
+};
+
+let output = {
+  path: config.build.assetsRoot,
+  filename: '[name].js',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? config.build.assetsPublicPath
+    : config.dev.assetsPublicPath
+};
+
+if (process.env.NODE_ENV === 'production') {
+  entry = {
+    index: './src/index.js'
+  };
+}
+
+
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: {
-    app: './example/main.js'
-  },
-  output: {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
-  },
+  entry: entry,
+  // output: {
+  //   path: config.build.assetsRoot,
+  //   filename: '[name].js',
+  //   publicPath: process.env.NODE_ENV === 'production'
+  //     ? config.build.assetsPublicPath
+  //     : config.dev.assetsPublicPath
+  // },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
