@@ -21,7 +21,9 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/dist/',
-    filename: '[name].min.js'
+    filename: '[name].min.js',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
