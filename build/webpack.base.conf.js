@@ -33,7 +33,7 @@ let output = {
 
 if (process.env.NODE_ENV === 'production') {
   entry = {
-    index: './src/index.js'
+    index: path.resolve(__dirname, '../src/index')
   };
 }
 
