@@ -2,7 +2,7 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
-const vueLoaderConfig = require('./vue-loader.conf')
+let vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -34,6 +34,14 @@ let output = {
 if (process.env.NODE_ENV === 'production') {
   entry = {
     index: path.resolve(__dirname, '../src/index')
+  };
+  vueLoaderConfig = {
+    loaders: {
+      css: 'vue-style-loader!css-loader'
+    },
+    postLoaders: {
+      html: 'babel-loader'
+    }
   };
 }
 
